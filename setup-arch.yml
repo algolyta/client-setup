@@ -27,6 +27,7 @@
       - swaybg
       - nwg-look
       - cage
+      - swaylock
     dotfiles:
       # Add dotfile entries here with src/dest pairs.
       # Example:
