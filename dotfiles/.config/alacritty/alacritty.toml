@@ -1,0 +1,36 @@
+[cursor]
+style = "Beam"
+unfocused_hollow = true
+
+[font]
+size = 10.0
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[selection]
+save_to_clipboard = true
+
+[window]
+decorations = "full"
+dynamic_padding = true
+opacity = 0.95
+
+[window.padding]
+x = 8
+y = 8
+
+[general]
+live_config_reload = true
+import = [
+    "~/.config/alacritty/themes/catppuccin_macchiato.toml"
+]

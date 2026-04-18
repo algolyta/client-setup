@@ -1,0 +1,33 @@
+/* Global */
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    color: #cdd6f4;
+}
+
+/* Bar background */
+window#waybar {
+    background: rgba(30, 30, 46, 0.9);
+    border-bottom: 2px solid #cba6f7;
+}
+
+/* Workspaces */
+#workspaces button {
+    padding: 0 8px;
+    color: #a6adc8;
+}
+
+#workspaces button.active {
+    color: #cba6f7;
+    border-bottom: 2px solid #cba6f7;
+}
+
+/* Clock */
+#clock {
+    color: #f5c2e7;
+}
+
+/* Right modules */
+#cpu, #memory, #network, #pulseaudio {
+    padding: 0 10px;
+}

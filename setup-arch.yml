@@ -1,0 +1,93 @@
+---
+- name: Setup Arch Linux packages and dotfiles
+  hosts: localhost
+  connection: local
+  become: true
+  vars:
+    jpgwallpaper: "wallhaven-k81776.jpg"
+    username: "v"
+    pacman_packages:
+      - base-devel
+      - git
+      - vim
+      - tmux
+      - ansible
+      - hyprland
+      - waybar
+      - alacritty
+      - rofi-wayland
+      - sddm
+      - greetd
+      - greetd-regreet
+      - wl-clipboard
+      - grim
+      - slurp
+      - swappy
+      - ttf-jetbrains-mono-nerd
+      - swaybg
+      - nwg-look
+      - cage
+    dotfiles:
+      # Add dotfile entries here with src/dest pairs.
+      # Example:
+      # - src: "dotfiles/.bashrc"
+      #   dest: "/home/{{ ansible_user_id }}/.bashrc"
+      - src: "dotfiles/.bashrc"
+        dest: "/home/{{ username }}/.bashrc"
+      - src: "dotfiles/.config/alacritty/alacritty.toml"
+        dest: "/home/{{ username }}/.config/alacritty/alacritty.toml"
+      - src: "dotfiles/.config/alacritty/themes"
+        dest: "/home/{{ username }}/.config/alacritty/"
+      - src: "dotfiles/.vimrc"
+        dest: "/home/{{ username }}/.vimrc"
+      - src: "dotfiles/.config/regreet"
+        dest: "/home/{{ username }}/.config/regreet/"
+      - src: "dotfiles/.config/hypr"
+        dest: "/home/{{ username }}/.config/hypr/"
+      - src: "dotfiles/.config/waybar"
+        dest: "/home/{{ username }}/.config/waybar/"
+    otherfiles:
+      - src: "configfiles/greetd_config.toml"
+        dest: "/etc/greetd/config.toml"
+      - src: "{{ jpgwallpaper }}"
+        dest: "/usr/share/backgrounds/wallpaper.jpg"
+  tasks:
+    - name: Update pacman packages
+      pacman:
+        upgrade: yes
+        update_cache: yes
+
+    - name: Install pacman packages
+      pacman:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      loop: "{{ pacman_packages }}"
+
+    - name: Copy dotfiles to target locations
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: "{{ username }}"
+        mode: preserve
+      loop: "{{ dotfiles }}"
+      when: dotfiles | length > 0
+
+    - name: Copy other files to target locations
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: "{{ username }}"
+        mode: preserve
+      loop: "{{ otherfiles }}"
+      when: otherfiles | length > 0
+
+    - name: Disable lightdm
+      systemd_service:
+        name: "lightdm"
+        enabled: false
+
+    - name: Enable greetd
+      systemd_service:
+        name: "greetd"
+        enabled: true

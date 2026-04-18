@@ -1,0 +1,7 @@
+[terminal]
+vt = 1
+
+[default_session]
+# This launches ReGreet (GTK-based greeter)
+command = "cage -s -- regreet"
+user = "greeter"

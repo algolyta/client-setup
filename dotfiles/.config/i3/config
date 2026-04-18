@@ -1,0 +1,260 @@
+# =========================
+# i3 config – "Vim & chill"
+# =========================
+
+# Dependencies: i3-vm i3status i3lock dmenu feh xss-lock alacritty firefox playerctl brightnessctl flameshot grim wl-clipboard nerd-fonts rofi
+
+# Mod-key: Super (Windows-tasten)
+set $mod Mod4
+
+# Terminal og favoritter (bytt gjerne)
+set $terminal alacritty
+set $browser brave
+set $menu rofi -show drun
+
+# Font
+font pango:JetBrains Mono 10
+
+# -------------------------
+# Oppstart og basis-tjenester
+# -------------------------
+# Bakgrunn (feh); bytt sti til favorittbilde
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/current.jpg
+exec_always "setxkbmap -layout us,no -option 'grp:alt_shift_toggle'"
+
+# Statuslinje (i3status – enkel og lett)
+bar {
+    status_command i3status
+    position top
+    font pango:JetBrainsMono Nerd Font 10
+
+    colors {
+        background #1E1E2E
+        statusline #EBD9F2
+        separator  #F5C2E7
+
+        focused_workspace  #F5C2E7 #F5C2E7 #1E1E2E
+        active_workspace   #DDB6F2 #DDB6F2 #1E1E2E
+        inactive_workspace #6E6C7E #6E6C7E #1E1E2E
+        urgent_workspace   #F28FAD #F28FAD #1E1E2E
+    }
+}
+
+# i3-gaps (trygt å ha – gjør det penere)
+gaps inner 12
+gaps outer 6
+smart_gaps on
+smart_borders on
+hide_edge_borders smart
+
+# -------------------------
+# Vim-inspirert fokus og flytting
+# -------------------------
+# Fokus med vim-taster
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Samme med piltaster (for muskelminnet)
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# Flytt vinduer med Shift + vim/pil
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# Endre størrelse med Ctrl + vim/pil
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+
+    bindsym Left  resize shrink width 10 px or 10 ppt
+    bindsym Down  resize grow height 10 px or 10 ppt
+    bindsym Up    resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # exit resize mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Ctrl+r mode "resize"
+
+# -------------------------
+# Layout og vindusstyring
+# -------------------------
+# Åpne terminal / launcher / browser
+bindsym $mod+Return exec $terminal
+bindsym $mod+d exec $menu
+bindsym $mod+b exec $browser
+
+# Kill fokusert vindu
+bindsym $mod+q kill
+
+# Fullscreen & split
+bindsym $mod+f fullscreen toggle
+bindsym $mod+v split v
+bindsym $mod+g split h
+
+# Stabling/tabbing/tilbake til flis
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Flytende og sticky
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+Ctrl+s sticky toggle
+
+# Fokus mellom “tilstander”
+bindsym $mod+space focus mode_toggle
+
+# Scratchpad (kjekt!)
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# -------------------------
+# Workspaces (enkle, med ikoner)
+# -------------------------
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8: "
+set $ws9 "9: "
+set $ws10 "10: "
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Flytte vinduer til workspace
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+
+# App-tilordninger (valgfritt – kommenter ut om uønsket)
+assign [class="(?i)brave"] $ws2
+assign [class="(?i)code|codium|jetbrains-.*"] $ws3
+assign [class="(?i)thunar|nautilus|dolphin"] $ws4
+assign [class="(?i)slack|discord|element|TeamSpeak"] $ws5
+assign [class="(?i)spotify"] $ws6
+
+# -------------------------
+# Lås & strømstyring
+# -------------------------
+# Manuell lås (enkelt: i3lock) Super+Alt+L
+bindsym $mod+Mod1+l exec i3lock -i ~/Pictures/wallpapers/lock.png -e -f -u
+
+# laptop: wallhaven-5g22q5.png
+
+# Automatisk lås med xss-lock + DPMS (skjerm av etter 10 min, lås etter 8)
+# Krever: xss-lock i3lock
+exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -n -i ~/Pictures/wallpapers/lock.png -e -f -u
+# Slå av skjerm (DPMS) etter inaktivitet
+exec --no-startup-id xset s 480 480
+exec --no-startup-id xset dpms 600 600 600
+
+# Rask suspender + lås
+bindsym $mod+Shift+s exec systemctl suspend
+
+# -------------------------
+# Lyd, lys og media (XF86-taster)
+# -------------------------
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+
+bindsym XF86AudioPlay  exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext  exec --no-startup-id playerctl next
+bindsym XF86AudioPrev  exec --no-startup-id playerctl previous
+
+# -------------------------
+# Skjermskudd
+# -------------------------
+# Hele skjermen
+bindsym Print exec --no-startup-id grim - | wl-copy
+# Område (flameshot som GUI-alternativ)
+bindsym Shift+Print exec --no-startup-id flameshot gui
+
+# -------------------------
+# Vindusdekor/tema
+# -------------------------
+# Focused/Unfocused farger (Catppuccin-ish)
+client.focused          #89b4fa #89b4fa #1e1e2e #89b4fa #1e1e2e
+client.focused_inactive #313244 #313244 #cdd6f4 #313244 #313244
+client.unfocused        #1e1e2e #1e1e2e #cdd6f4 #1e1e2e #1e1e2e
+client.urgent           #f38ba8 #f38ba8 #1e1e2e #f38ba8 #1e1e2e
+client.background       #1e1e2e
+
+# Border-stil
+new_window pixel 2
+new_float  pixel 2
+default_border pixel 2
+focus_follows_mouse yes
+
+# -------------------------
+# Vindusregler (kjekt for dialoger)
+# -------------------------
+for_window [window_role="pop-up"] floating enable, move position center
+for_window [window_type="dialog"] floating enable, move position center
+for_window [class="(?i)pinentry.*"] floating enable, sticky enable, border pixel 2
+
+# -------------------------
+# System/Exit-meny (i3-nagbar)
+# -------------------------
+bindsym $mod+Shift+e exec --no-startup-id i3-nagbar -t warning -m 'Exit i3? (l=logout, r=restart i3, s=suspend, h=hibernate, p=poweroff, Shift+q=cancel)' \
+    -b 'Logout'   'i3-msg exit' \
+    -b 'Restart'  'i3-msg restart' \
+    -b 'Suspend'  'systemctl suspend' \
+    -b 'Hibernate''systemctl hibernate' \
+    -b 'Poweroff' 'systemctl poweroff'
+
+# -------------------------
+# Defaults/compat
+# -------------------------
+# Flytt fokus mellom skjermer
+bindsym $mod+Ctrl+Left  focus output left
+bindsym $mod+Ctrl+Right focus output right
+bindsym $mod+Ctrl+Up    focus output up
+bindsym $mod+Ctrl+Down  focus output down
+
+# Restart i3 / reload config
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# Autostart noen nyttige ting (kommenter ut om du ikke vil ha dem)
+# exec --no-startup-id nm-applet
+# exec --no-startup-id blueman-applet
+# exec --no-startup-id udiskie --tray
