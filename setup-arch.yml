@@ -46,6 +46,8 @@
         dest: "/home/{{ username }}/.config/hypr/"
       - src: "dotfiles/.config/waybar"
         dest: "/home/{{ username }}/.config/waybar/"
+      - src: "dotfiles/.config/rofi"
+        dest: "/home/{{ username }}/.config/rofi/"
     otherfiles:
       - src: "configfiles/greetd_config.toml"
         dest: "/etc/greetd/config.toml"
