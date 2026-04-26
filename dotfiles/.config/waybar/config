@@ -5,7 +5,7 @@
 
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["pulseaudio", "network", "cpu", "memory"],
+  "modules-right": ["network", "pulseaudio", "cpu", "memory"],
 
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -20,5 +20,32 @@
       "8": "8 ",
       "9": "9 "
     }
+  },
+
+    "clock": {
+      "format": " {:%H:%M |  %Y-%m-%d}",
+      "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n<tt>{calendar}</tt>",
+      "interval": 1
+    },
+
+  "network": {
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": "󰈀 {ipaddr}",
+    "format-linked": "󰈀 {ifname} (no IP)",
+    "format-disconnected": "⚠ disconnected",
+    "tooltip-format": "Interface: {ifname}\nIP: {ipaddr}\nGW: {gwaddr}"
+  },
+
+  "pulseaudio": {
+    "format": " {volume}%",
+    "format-muted": " muted"
+  },
+
+  "cpu": {
+    "format": " {usage}%"
+  },
+
+  "memory": {
+    "format": " {percentage}%"
   }
 }
