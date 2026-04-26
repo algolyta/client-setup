@@ -29,6 +29,8 @@
       - cage
       - swaylock
 #      - noto-fonts-emoji`
+      - pamixer
+      - brightnessctl
     dotfiles:
       # Add dotfile entries here with src/dest pairs.
       # Example:
