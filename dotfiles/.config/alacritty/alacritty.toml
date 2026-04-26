@@ -23,7 +23,7 @@ save_to_clipboard = true
 [window]
 decorations = "full"
 dynamic_padding = true
-opacity = 0.95
+opacity = 0.75
 
 [window.padding]
 x = 8
