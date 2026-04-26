@@ -28,7 +28,7 @@
       - nwg-look
       - cage
       - swaylock
-      - noto-fonts-emoji`
+#      - noto-fonts-emoji`
     dotfiles:
       # Add dotfile entries here with src/dest pairs.
       # Example:
