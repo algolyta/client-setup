@@ -5,7 +5,6 @@
   become: true
   vars:
     jpgwallpaper: "wallhaven-k81776.jpg"
-    username: "v"
     pacman_packages:
       - base-devel
       - git
@@ -37,21 +36,21 @@
       # - src: "dotfiles/.bashrc"
       #   dest: "/home/{{ ansible_user_id }}/.bashrc"
       - src: "dotfiles/.bashrc"
-        dest: "/home/{{ username }}/.bashrc"
+        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.bashrc"
       - src: "dotfiles/.config/alacritty/alacritty.toml"
-        dest: "/home/{{ username }}/.config/alacritty/alacritty.toml"
+        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/alacritty/alacritty.toml"
       - src: "dotfiles/.config/alacritty/themes"
-        dest: "/home/{{ username }}/.config/alacritty/"
+        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/alacritty/"
       - src: "dotfiles/.vimrc"
-        dest: "/home/{{ username }}/.vimrc"
+        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.vimrc"
       - src: "dotfiles/.config/regreet"
-        dest: "/home/{{ username }}/.config/"
+        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
       - src: "dotfiles/.config/hypr"
-        dest: "/home/{{ username }}/.config/"
+        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
       - src: "dotfiles/.config/waybar"
-        dest: "/home/{{ username }}/.config/"
+        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
       - src: "dotfiles/.config/rofi"
-        dest: "/home/{{ username }}/.config/"
+        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
     otherfiles:
       - src: "configfiles/greetd_config.toml"
         dest: "/etc/greetd/config.toml"
@@ -74,7 +73,7 @@
       copy:
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
-        owner: "{{ username }}"
+        owner: "{{ lookup('ansible.builtin.env', 'SUDO_USER') }}"
         mode: preserve
       loop: "{{ dotfiles }}"
       when: dotfiles | length > 0
@@ -83,7 +82,7 @@
       copy:
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
-        owner: "{{ username }}"
+        owner: "{{ lookup('ansible.builtin.env', 'SUDO_USER') }}"
         mode: preserve
       loop: "{{ otherfiles }}"
       when: otherfiles | length > 0
