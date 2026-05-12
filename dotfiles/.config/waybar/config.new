@@ -1,0 +1,63 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+
+    "modules-left":   ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right":  ["network", "pulseaudio", "cpu", "memory", "hyprland/language"],
+
+    // ── Workspaces ──────────────────────────────────────────────
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1 ", "2": "2 ", "3": "3 ",
+            "4": "4 ", "5": "5 ", "6": "6 ",
+            "7": "7 ", "8": "8 ", "9": "9 "
+        }
+    },
+
+    // ── Clock ────────────────────────────────────────────────────
+    "clock": {
+        "format": " {:%H:%M:%S |  %Y-%m-%d}",
+        "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n<tt>{calendar}</tt>",
+        "interval": 1
+    },
+
+    // ── Network ──────────────────────────────────────────────────
+    "network": {
+        "format-wifi":        " {essid} ({signalStrength}%)",
+        "format-ethernet":    "󰈀 {ipaddr}",
+        "format-linked":      "󰈀 {ifname} (no IP)",
+        "format-disconnected": "⚠ disconnected",
+        "tooltip-format":     "Interface: {ifname}\nIP: {ipaddr}\nGW: {gwaddr}"
+    },
+
+    // ── Audio ────────────────────────────────────────────────────
+    "pulseaudio": {
+        "format":       " {volume}%",
+        "format-muted": " muted"
+    },
+
+    // ── CPU ──────────────────────────────────────────────────────
+    "cpu": {
+        "format": " {usage}%"
+    },
+
+    // ── Memory ───────────────────────────────────────────────────
+    "memory": {
+        "format": " {percentage}%"
+    },
+
+    // ── Keyboard layout ──────────────────────────────────────────
+    // Shows the active keyboard layout, e.g. "🇺🇸 EN" / "🇳🇴 NO".
+    // Hyprland updates this automatically when you switch with Alt+Shift.
+    // `keyboard-name` is optional — omit it to track the focused device,
+    // or set it to pin to a specific keyboard, e.g. "at-translated-set-2-keyboard".
+    "hyprland/language": {
+        "format":        "  {}",
+        "format-en":     "  EN",
+        "format-no":     "  NO",
+        "tooltip":       false
+    }
+}
