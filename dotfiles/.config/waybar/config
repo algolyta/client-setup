@@ -56,10 +56,6 @@
     },
 
     // ── Keyboard layout ──────────────────────────────────────────
-    // Shows the active keyboard layout, e.g. "🇺🇸 EN" / "🇳🇴 NO".
-    // Hyprland updates this automatically when you switch with Alt+Shift.
-    // `keyboard-name` is optional — omit it to track the focused device,
-    // or set it to pin to a specific keyboard, e.g. "at-translated-set-2-keyboard".
     "hyprland/language": {
         "format":        " {}",
         "tooltip":       false
