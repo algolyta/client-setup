@@ -144,10 +144,6 @@ hl.config({
 -- NEW: 3-finger horizontal swipe to switch workspaces
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 
--- NEW: 4-finger swipe up/down for special workspace
-hl.gesture({ fingers = 4, direction = "up",   action = hl.dsp.workspace.toggle_special("magic") })
-hl.gesture({ fingers = 4, direction = "down", action = hl.dsp.workspace.toggle_special("magic") })
-
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
@@ -162,15 +158,12 @@ hl.bind(mainMod .. " + Q",      hl.dsp.window.close())
 hl.bind(mainMod .. " + F",      hl.dsp.window.fullscreen({ mode = "toggle" }))
 hl.bind(mainMod .. " + V",      hl.dsp.window.float({ action = "toggle" }))
 
--- NEW: Center floating window
-hl.bind(mainMod .. " + C",      hl.dsp.window.move({ position = "center" }))
-
 -- Reload / exit
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
 
 -- Lock screen
-hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("swaylock -c 000000"))
+hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("swaylock -c 000000"))
 
 -- Screenshot
 hl.bind("Print",                 hl.dsp.exec_cmd("grim"))
@@ -188,12 +181,6 @@ hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
 
--- NEW: Resize windows with SUPER + ALT + HJKL (repeating for held key)
-hl.bind(mainMod .. " + ALT + H", hl.dsp.window.resize({ direction = "left",  amount = 30 }), { repeating = true })
-hl.bind(mainMod .. " + ALT + L", hl.dsp.window.resize({ direction = "right", amount = 30 }), { repeating = true })
-hl.bind(mainMod .. " + ALT + K", hl.dsp.window.resize({ direction = "up",    amount = 30 }), { repeating = true })
-hl.bind(mainMod .. " + ALT + J", hl.dsp.window.resize({ direction = "down",  amount = 30 }), { repeating = true })
-
 -- NEW: Mouse drag to move and resize
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })  -- LMB drag = move
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })  -- RMB drag = resize
@@ -207,10 +194,6 @@ end
 -- Scroll through workspaces with mouse wheel
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
-
--- NEW: Scratchpad (special workspace)
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Hardware / media keys
 hl.bind("XF86AudioRaiseVolume",  hl.dsp.exec_cmd("pamixer -i 5"),  { locked = true, repeating = true })
@@ -282,24 +265,4 @@ hl.window_rule({
     name      = "brave-ws2",
     match     = { class = "^brave-browser$" },
     workspace = 2,
-})
-
--- NEW: Floating terminal (alacritty launched with --class floatterm)
--- Usage: alacritty --class floatterm
-hl.window_rule({
-    name   = "floatterm",
-    match  = { class = "^floatterm$" },
-    float  = true,
-    size   = { width = 900, height = 550 },
-    move   = { position = "center" },
-})
-
--- NEW: Picture-in-picture for video players
-hl.window_rule({
-    name  = "pip",
-    match = { title = "Picture.in.Picture" },
-    float = true,
-    pin   = true,   -- stays on top across workspaces
-    size  = { width = 480, height = 270 },
-    move  = { position = { x = "monitor_w - 500", y = "monitor_h - 290" } },
 })
