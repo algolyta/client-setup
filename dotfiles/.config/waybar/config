@@ -32,7 +32,7 @@
 
     // ── Network ──────────────────────────────────────────────────
     "network": {
-        "format-wifi":        " {essid} ({signalStrength}%)",
+        "format-wifi":        " {essid} ({signalStrength}%)",
         "format-ethernet":    "󰈀 {ipaddr}",
         "format-linked":      "󰈀 {ifname} (no IP)",
         "format-disconnected": "⚠ disconnected",
@@ -41,18 +41,18 @@
 
     // ── Audio ────────────────────────────────────────────────────
     "pulseaudio": {
-        "format":       " {volume}%",
-        "format-muted": " muted"
+        "format":       " {volume}%",
+        "format-muted": " muted"
     },
 
     // ── CPU ──────────────────────────────────────────────────────
     "cpu": {
-        "format": " {usage}%"
+        "format": " {usage}%"
     },
 
     // ── Memory ───────────────────────────────────────────────────
     "memory": {
-        "format": " {percentage}%"
+        "format": " {percentage}%"
     },
 
     // ── Keyboard layout ──────────────────────────────────────────
