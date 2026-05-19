@@ -280,15 +280,23 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name      = "faugus-ws8",
-    match     = { class = "^faugus-launcher$" },
-    workspace = 8,
+    name      = "spotify-ws6",
+    match     = { class = "^Spotify$" },
+    workspace = 6,
 })
 
 hl.window_rule({
-    name      = "battle.net-ws8",
+    name      = "faugus-ws9",
+    match     = { class = "^faugus-launcher$" },
+    float     = true,
+    workspace = 9,
+})
+
+hl.window_rule({
+    name      = "battle.net-ws9",
     match     = { initial_title = "^Battle.net$" },
-    workspace = 8,
+    float     = true,
+    workspace = 9,
 })
 
 hl.window_rule({
