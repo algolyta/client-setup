@@ -263,6 +263,37 @@ hl.window_rule({
 -- NEW: Brave opens on workspace 2
 hl.window_rule({
     name      = "brave-ws2",
-    match     = { class = "^brave-browser$" },
+    match     = { class = "^Brave-browser$" },
     workspace = 2,
+})
+
+hl.window_rule({
+    name      = "signal-ws5",
+    match     = { class = "^signal$" },
+    workspace = 5,
+})
+
+hl.window_rule({
+    name      = "discord-ws5",
+    match     = { class = "^discord$" },
+    workspace = 5,
+})
+
+hl.window_rule({
+    name      = "faugus-ws8",
+    match     = { class = "^faugus-launcher$" },
+    workspace = 8,
+})
+
+hl.window_rule({
+    name      = "battle.net-ws8",
+    match     = { initial_title = "^Battle.net$" },
+    workspace = 8,
+})
+
+hl.window_rule({
+    name      = "wow-ws9",
+    match     = { initial_title = "^World of Warcraft$" },
+    fullscreen_state = 1,
+    workspace = 9,
 })
