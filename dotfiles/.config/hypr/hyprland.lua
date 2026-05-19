@@ -155,7 +155,7 @@ hl.bind(mainMod .. " + B",      hl.dsp.exec_cmd(browser))
 
 -- Window management
 hl.bind(mainMod .. " + Q",      hl.dsp.window.close())
-hl.bind(mainMod .. " + F",      hl.dsp.window.fullscreen({ mode = "toggle" }))
+hl.bind(mainMod .. " + F",      hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(mainMod .. " + V",      hl.dsp.window.float({ action = "toggle" }))
 
 -- Reload / exit
