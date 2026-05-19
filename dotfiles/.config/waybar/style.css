@@ -1,3 +1,7 @@
+/* ═══════════════════════════════════════════════
+   Waybar — Catppuccin Mocha theme
+   ═══════════════════════════════════════════════ */
+
 /* Global */
 * {
     font-family: "JetBrainsMono Nerd Font";
@@ -11,7 +15,7 @@ window#waybar {
     border-bottom: 2px solid #cba6f7;
 }
 
-/* Workspaces */
+/* ── Workspaces ──────────────────────────────── */
 #workspaces button {
     padding: 0 8px;
     color: #a6adc8;
@@ -22,32 +26,44 @@ window#waybar {
     border-bottom: 2px solid #cba6f7;
 }
 
-/* Clock */
+/* ── Clock ───────────────────────────────────── */
 #clock {
     color: #f5c2e7;
 }
 
-/* Right modules spacing + subtle grouping */
-#cpu, #memory, #network, #pulseaudio {
+/* ── Right modules — shared base ─────────────── */
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#language {
     padding: 0 10px;
     margin: 0 2px;
     border-radius: 6px;
     background: rgba(49, 50, 68, 0.5);
 }
 
-/* Optional: give each module a slight personality */
+/* ── Per-module accent colours ───────────────── */
 #cpu {
-    color: #fab387;
+    color: #fab387;   /* Peach */
 }
 
 #memory {
-    color: #94e2d5;
+    color: #94e2d5;   /* Teal */
 }
 
 #network {
-    color: #89b4fa;
+    color: #89b4fa;   /* Blue */
 }
 
 #pulseaudio {
-    color: #f9e2af;
+    color: #f9e2af;   /* Yellow */
+}
+
+/* ── Keyboard layout ─────────────────────────── */
+/* Sits in the far-right corner; purple to match the active border */
+#language {
+    color: #cba6f7;   /* Mauve — matches your active border */
+    margin-right: 6px;
+    font-weight: bold;
 }
