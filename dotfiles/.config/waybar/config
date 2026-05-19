@@ -25,7 +25,7 @@
 
     // ── Clock ────────────────────────────────────────────────────
     "clock": {
-        "format": " {:%H:%M:%S |  %Y-%m-%d}",
+        "format": " {:%H:%M:%S |  %Y-%m-%d}",
         "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n<tt>{calendar}</tt>",
         "interval": 1
     },
