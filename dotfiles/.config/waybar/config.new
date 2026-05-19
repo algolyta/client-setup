@@ -61,9 +61,7 @@
     // `keyboard-name` is optional — omit it to track the focused device,
     // or set it to pin to a specific keyboard, e.g. "at-translated-set-2-keyboard".
     "hyprland/language": {
-        "format":        "  {}",
-        "format-en":     "  EN",
-        "format-no":     "  NO",
+        "format":        " {}",
         "tooltip":       false
     }
 }
