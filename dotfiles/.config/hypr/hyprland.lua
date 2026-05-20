@@ -246,62 +246,18 @@ hl.bind(mainMod .. " + P + T", hl.dsp.window.float({ action = "toggle" }))
 ------------------------------------
 
 -- Suppress maximize events from all apps
-hl.window_rule({
-    name          = "suppress-maximize",
-    match         = { class = ".*" },
-    suppress_event = "maximize",
-})
-
+hl.window_rule({ name = "suppress-maximize", match = { class = ".*" }, suppress_event = "maximize" })
 -- Fix XWayland drag issues
-hl.window_rule({
-    name          = "fix-xwayland-drags",
-    match         = { class = "^$", title = "^$", xwayland = true,
-                      float = true, fullscreen = false, pin = false },
-    no_focus      = true,
-})
-
--- NEW: Brave opens on workspace 2
-hl.window_rule({
-    name      = "brave-ws2",
-    match     = { class = "^Brave-browser$" },
-    workspace = 2,
-})
-
-hl.window_rule({
-    name      = "signal-ws5",
-    match     = { class = "^signal$" },
-    workspace = 5,
-})
-
-hl.window_rule({
-    name      = "discord-ws5",
-    match     = { class = "^discord$" },
-    workspace = 5,
-})
-
-hl.window_rule({
-    name      = "spotify-ws6",
-    match     = { class = "^Spotify$" },
-    workspace = 6,
-})
-
-hl.window_rule({
-    name      = "faugus-ws9",
-    match     = { class = "^faugus-launcher$" },
-    float     = true,
-    workspace = 9,
-})
-
-hl.window_rule({
-    name      = "battle.net-ws9",
-    match     = { initial_title = "^Battle.net$" },
-    float     = true,
-    workspace = 9,
-})
-
-hl.window_rule({
-    name      = "wow-ws9",
-    match     = { initial_title = "^World of Warcraft$" },
-    fullscreen_state = 1,
-    workspace = 9,
-})
+hl.window_rule({ name = "fix-xwayland-drags", match = { class = "^$", title = "^$", xwayland = true, float = true, fullscreen = false, pin = false }, no_focus = true })
+-- Assign different apps to workspaces
+-- 2
+hl.window_rule({ workspace = 2, match = { class = "^Brave-browser$" } })
+-- 5
+hl.window_rule({ workspace = 5, match = { class = "^signal$" } })
+hl.window_rule({ workspace = 5, match = { class = "^discord$" } })
+-- 6
+hl.window_rule({ workspace = 6, match = { class = "^Spotify$" } })
+-- 9
+hl.window_rule({ workspace = 9, match = { class = "^faugus-launcher$" }, float = true  })
+hl.window_rule({ workspace = 9, match = { initial_title = "^Battle.net$" }, float = true  })
+hl.window_rule({ workspace = 9, match = { initial_title = "^World of Warcraft$" }, fullscreen = true })
