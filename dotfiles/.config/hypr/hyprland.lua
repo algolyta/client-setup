@@ -260,4 +260,4 @@ hl.window_rule({ workspace = 6, match = { class = "^Spotify$" } })
 -- 9
 hl.window_rule({ workspace = 9, match = { class = "^faugus-launcher$" }, float = true  })
 hl.window_rule({ workspace = 9, match = { initial_title = "^Battle.net$" }, float = true  })
-hl.window_rule({ workspace = 9, match = { initial_title = "^World of Warcraft$" }, fullscreen = true })
+hl.window_rule({ workspace = 9, match = { initial_title = "^World of Warcraft$" }, maximize = true })
