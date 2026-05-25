@@ -30,6 +30,7 @@
 #      - noto-fonts-emoji`
       - pamixer
       - brightnessctl
+      - zsh
     dotfiles:
       # Add dotfile entries here with src/dest pairs.
       # Example:
@@ -51,6 +52,8 @@
         dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
       - src: "dotfiles/.config/rofi"
         dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
+#      - src: "dotfiles/.config/zsh"
+#        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
     otherfiles:
       - src: "configfiles/greetd_config.toml"
         dest: "/etc/greetd/config.toml"
@@ -96,3 +99,9 @@
       systemd_service:
         name: "greetd"
         enabled: true
+
+    - name: Change shell to zsh
+      user:
+        user: "{{ lookup('ansible.builtin.env') }}"
+        shell: "/bin/zsh"
+
