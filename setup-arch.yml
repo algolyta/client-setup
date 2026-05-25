@@ -101,7 +101,8 @@
         enabled: true
 
     - name: Change shell to zsh
+      tags: zsh
       user:
         user: "{{ lookup('ansible.builtin.env', 'SUDO_USER') }}"
-        shell: "/bin/zsh"
+        shell: "/usr/bin/zsh"
 
