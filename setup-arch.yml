@@ -102,6 +102,6 @@
 
     - name: Change shell to zsh
       user:
-        user: "{{ lookup('ansible.builtin.env') }}"
+        user: "{{ lookup('ansible.builtin.env', 'SUDO_USER') }}"
         shell: "/bin/zsh"
 
