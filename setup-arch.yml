@@ -31,6 +31,7 @@
       - pamixer
       - brightnessctl
       - zsh
+      - neovim
     dotfiles:
       # Add dotfile entries here with src/dest pairs.
       # Example:
