@@ -59,6 +59,8 @@
         dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.p10k.zsh"
       - src: "dotfiles/.zsh"
         dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.zsh/"
+      - src: "dotfiles/.config/nvim"
+        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/nvim/"
     otherfiles:
       - src: "configfiles/greetd_config.toml"
         dest: "/etc/greetd/config.toml"
