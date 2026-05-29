@@ -1,4 +1,5 @@
 export EDITOR=nvim
+export PATH="$HOME/.local/bin:$PATH"
 
 HISTSIZE=5000
 SAVEHIST=5000
