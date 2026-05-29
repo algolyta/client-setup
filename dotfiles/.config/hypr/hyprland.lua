@@ -141,6 +141,12 @@ hl.config({
     },
 })
 
+hl.config({
+    cursor = {
+        inactive_timeout = 2,
+    },
+})
+
 -- NEW: 3-finger horizontal swipe to switch workspaces
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 

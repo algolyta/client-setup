@@ -15,17 +15,14 @@
       - waybar
       - alacritty
       - rofi-wayland
-      - sddm
       - greetd
       - nwg-hello
       - wl-clipboard
       - grim
       - slurp
-      - swappy
       - ttf-jetbrains-mono-nerd
       - swaybg
       - nwg-look
-      - cage
       - swaylock
 #      - noto-fonts-emoji`
       - pamixer
