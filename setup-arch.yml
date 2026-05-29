@@ -43,8 +43,6 @@
         dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/alacritty/"
       - src: "dotfiles/.vimrc"
         dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.vimrc"
-      - src: "dotfiles/.config/hypr"
-        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
       - src: "dotfiles/.config/waybar"
         dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
       - src: "dotfiles/.config/rofi"
