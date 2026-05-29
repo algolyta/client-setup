@@ -1,5 +1,6 @@
 export EDITOR=nvim
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.opencode/bin:$PATH"
+export PATH=/home/v/.opencode/bin:$PATH
 
 HISTSIZE=5000
 SAVEHIST=5000
