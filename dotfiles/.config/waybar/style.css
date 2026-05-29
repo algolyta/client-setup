@@ -38,6 +38,7 @@ window#waybar {
 #memory,
 #network,
 #pulseaudio,
+#custom-battery,
 #language {
     padding: 0 10px;
     margin: 0 2px;
@@ -60,6 +61,10 @@ window#waybar {
 
 #pulseaudio {
     color: #f9e2af;   /* Yellow */
+}
+
+#custom-battery {
+    color: #a6e3a1;   /* Green */
 }
 
 /* ── Keyboard layout ─────────────────────────── */
