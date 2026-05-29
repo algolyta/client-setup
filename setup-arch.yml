@@ -25,16 +25,11 @@
       - swaybg
       - nwg-look
       - swaylock
-#      - noto-fonts-emoji`
       - pamixer
       - brightnessctl
       - zsh
       - neovim
     dotfiles:
-      # Add dotfile entries here with src/dest pairs.
-      # Example:
-      # - src: "dotfiles/.bashrc"
-      #   dest: "/home/{{ ansible_user_id }}/.bashrc"
       - src: "dotfiles/.bashrc"
         dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.bashrc"
       - src: "dotfiles/.config/alacritty/alacritty.toml"
