@@ -2,6 +2,6 @@
 vt = 1
 
 [default_session]
-# This launches ReGreet (GTK-based greeter)
-command = "cage -s -- regreet"
+# This launches nwg-hello via Hyprland
+command = "Hyprland -c /etc/nwg-hello/hyprland.lua"
 user = "greeter"

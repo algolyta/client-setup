@@ -17,7 +17,7 @@
       - rofi-wayland
       - sddm
       - greetd
-      - greetd-regreet
+      - nwg-hello
       - wl-clipboard
       - grim
       - slurp
@@ -45,8 +45,6 @@
         dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/alacritty/"
       - src: "dotfiles/.vimrc"
         dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.vimrc"
-      - src: "dotfiles/.config/regreet"
-        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
       - src: "dotfiles/.config/hypr"
         dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
       - src: "dotfiles/.config/waybar"
@@ -64,6 +62,12 @@
     otherfiles:
       - src: "configfiles/greetd_config.toml"
         dest: "/etc/greetd/config.toml"
+      - src: "configfiles/nwg-hello.json"
+        dest: "/etc/nwg-hello/nwg-hello.json"
+      - src: "configfiles/nwg-hello.css"
+        dest: "/etc/nwg-hello/nwg-hello.css"
+      - src: "configfiles/nwg-hello.hyprland.lua"
+        dest: "/etc/nwg-hello/hyprland.lua"
       - src: "{{ jpgwallpaper }}"
         dest: "/usr/share/backgrounds/wallpaper.jpg"
   tasks:
