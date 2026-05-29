@@ -5,7 +5,7 @@
 
     "modules-left":   ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right":  ["network", "pulseaudio", "cpu", "memory", "hyprland/language"],
+    "modules-right":  ["network", "pulseaudio", "cpu", "memory", "custom/battery", "hyprland/language"],
 
     // ── Workspaces ──────────────────────────────────────────────
     "hyprland/workspaces": {
@@ -53,6 +53,15 @@
     // ── Memory ───────────────────────────────────────────────────
     "memory": {
         "format": " {percentage}%"
+    },
+
+    // ── Battery ──────────────────────────────────────────────────
+    "custom/battery": {
+        "exec": "~/.config/waybar/scripts/battery.sh",
+        "exec-if": "test -d /sys/class/power_supply/BAT0",
+        "interval": 30,
+        "format": "{}",
+        "tooltip": true
     },
 
     // ── Keyboard layout ──────────────────────────────────────────

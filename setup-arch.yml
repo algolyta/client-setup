@@ -5,6 +5,7 @@
   become: true
   vars:
     jpgwallpaper: "wallhaven-k81776.jpg"
+    hypr_default_browser: "{{ 'firefox' if ansible_hostname == 'archyarch' else 'brave' }}"
     pacman_packages:
       - base-devel
       - git
@@ -97,6 +98,15 @@
         mode: preserve
       loop: "{{ otherfiles }}"
       when: otherfiles | length > 0
+
+    - name: Template config files with host overrides
+      template:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: "{{ lookup('ansible.builtin.env', 'SUDO_USER') }}"
+      loop:
+        - src: dotfiles/.config/hypr/hyprland.lua
+          dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/hypr/hyprland.lua"
 
     - name: Disable lightdm
       systemd_service:

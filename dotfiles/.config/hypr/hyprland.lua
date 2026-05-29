@@ -26,7 +26,7 @@ hl.monitor({
 
 local terminal = "alacritty"
 local menu     = "rofi -show drun"
-local browser  = "brave"
+local browser  = "{{ hypr_default_browser }}"
 
 -- Modifier key
 local mainMod = "SUPER"
