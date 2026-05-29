@@ -59,6 +59,7 @@
     "custom/battery": {
         "exec": "~/.config/waybar/scripts/battery.sh",
         "exec-if": "find /sys/class/power_supply -name 'BAT*' | grep -q .",
+        "return-type": "json",
         "interval": 30,
         "format": "{}",
         "tooltip": true
