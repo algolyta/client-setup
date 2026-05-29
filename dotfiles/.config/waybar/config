@@ -58,7 +58,7 @@
     // ── Battery ──────────────────────────────────────────────────
     "custom/battery": {
         "exec": "~/.config/waybar/scripts/battery.sh",
-        "exec-if": "test -d /sys/class/power_supply/BAT0",
+        "exec-if": "find /sys/class/power_supply -name 'BAT*' | grep -q .",
         "interval": 30,
         "format": "{}",
         "tooltip": true
