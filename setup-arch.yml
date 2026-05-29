@@ -5,7 +5,7 @@
   become: true
   vars:
     jpgwallpaper: "wallhaven-k81776.jpg"
-    hypr_default_browser: "{{ 'firefox' if ansible_hostname == 'archyarch' else 'brave' }}"
+    hypr_default_browser: "{{ 'firefox' if ansible_facts['hostname'] == 'archyarch' else 'brave' }}"
     pacman_packages:
       - base-devel
       - git
