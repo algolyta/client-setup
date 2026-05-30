@@ -1,0 +1,67 @@
+jpgwallpaper: "wallhaven-k81776.jpg"
+hypr_default_browser: "{{ 'firefox' if ansible_facts['hostname'] == 'archyarch' else 'brave' }}"
+waybar_workspace_icons:
+  1: "{{ '' if ansible_facts['hostname'] == 'archyarch' else '' }}"
+  2: "{{ '' if ansible_facts['hostname'] == 'archyarch' else '' }}"
+  3: "{{ '' if ansible_facts['hostname'] == 'archyarch' else '' }}"
+  4: "{{ '' if ansible_facts['hostname'] == 'archyarch' else '' }}"
+  5: "{{ '' if ansible_facts['hostname'] == 'archyarch' else '' }}"
+  6: "{{ '' if ansible_facts['hostname'] == 'archyarch' else '' }}"
+  7: "{{ '' if ansible_facts['hostname'] == 'archyarch' else '' }}"
+  8: "{{ '' if ansible_facts['hostname'] == 'archyarch' else '' }}"
+  9: "{{ '' if ansible_facts['hostname'] == 'archyarch' else '' }}"
+pacman_packages:
+  - base-devel
+  - git
+  - vim
+  - tmux
+  - ansible
+  - hyprland
+  - waybar
+  - alacritty
+  - rofi-wayland
+  - greetd
+  - nwg-hello
+  - wl-clipboard
+  - grim
+  - slurp
+  - ttf-jetbrains-mono-nerd
+  - swaybg
+  - nwg-look
+  - swaylock
+  - pamixer
+  - brightnessctl
+  - zsh
+  - neovim
+dotfiles:
+  - src: "dotfiles/.bashrc"
+    dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.bashrc"
+  - src: "dotfiles/.config/alacritty/alacritty.toml"
+    dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/alacritty/alacritty.toml"
+  - src: "dotfiles/.config/alacritty/themes"
+    dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/alacritty/"
+  - src: "dotfiles/.vimrc"
+    dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.vimrc"
+  - src: "dotfiles/.config/waybar"
+    dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
+  - src: "dotfiles/.config/rofi"
+    dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
+  - src: "dotfiles/.zshrc"
+    dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.zshrc"
+  - src: "dotfiles/.p10k.zsh"
+    dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.p10k.zsh"
+  - src: "dotfiles/.zsh"
+    dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.zsh/"
+  - src: "dotfiles/.config/nvim"
+    dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/nvim/"
+otherfiles:
+  - src: "configfiles/greetd_config.toml"
+    dest: "/etc/greetd/config.toml"
+  - src: "configfiles/nwg-hello.json"
+    dest: "/etc/nwg-hello/nwg-hello.json"
+  - src: "configfiles/nwg-hello.css"
+    dest: "/etc/nwg-hello/nwg-hello.css"
+  - src: "configfiles/nwg-hello.hyprland.lua"
+    dest: "/etc/nwg-hello/hyprland.lua"
+  - src: "{{ jpgwallpaper }}"
+    dest: "/usr/share/backgrounds/wallpaper.jpg"
