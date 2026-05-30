@@ -1,0 +1,8 @@
+# System-specific Hyprland window rules.
+# Copy this file to local_vars.yml and customize per hostname.
+# The hostname is matched against ansible_facts['hostname'].
+host_window_rules:
+  yourhostname:
+    - '{ workspace = 2, match = { class = "^firefox$" } }'
+    - '{ workspace = 3, match = { class = "^Alacritty$" } }'
+    - '{ workspace = 6, match = { class = "^Spotify$" } }'

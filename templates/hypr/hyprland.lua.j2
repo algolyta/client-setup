@@ -256,14 +256,9 @@ hl.window_rule({ name = "suppress-maximize", match = { class = ".*" }, suppress_
 -- Fix XWayland drag issues
 hl.window_rule({ name = "fix-xwayland-drags", match = { class = "^$", title = "^$", xwayland = true, float = true, fullscreen = false, pin = false }, no_focus = true })
 -- Assign different apps to workspaces
--- 2
-hl.window_rule({ workspace = 2, match = { class = "^Brave-browser$" } })
--- 5
-hl.window_rule({ workspace = 5, match = { class = "^signal$" } })
-hl.window_rule({ workspace = 5, match = { class = "^discord$" } })
--- 6
-hl.window_rule({ workspace = 6, match = { class = "^Spotify$" } })
--- 9
-hl.window_rule({ workspace = 9, match = { class = "^faugus-launcher$" }, float = true  })
-hl.window_rule({ workspace = 9, match = { initial_title = "^Battle.net$" }, float = true  })
-hl.window_rule({ workspace = 9, match = { initial_title = "^World of Warcraft$" }, maximize = true })
+{% set h = ansible_facts['hostname'] %}
+{% if host_window_rules is defined and host_window_rules[h] is defined %}
+{% for rule in host_window_rules[h] %}
+hl.window_rule({{ rule }})
+{% endfor %}
+{% endif %}

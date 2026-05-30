@@ -36,6 +36,11 @@
       loop: "{{ otherfiles }}"
       when: otherfiles | length > 0
 
+    - name: Load local vars (host-specific window rules)
+      ansible.builtin.include_vars:
+        file: "{{ lookup('ansible.builtin.first_found', ['local_vars.yml', 'local_vars.yml.default']) }}"
+      tags: always
+
     - name: Template config files with host overrides
       template:
         src: "{{ item.src }}"
