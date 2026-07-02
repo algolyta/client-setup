@@ -25,3 +25,5 @@ ZSH_HIGHLIGHT_STYLES[command]='fg=252'
 
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+eval "$(fzf --zsh)"

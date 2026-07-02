@@ -33,6 +33,7 @@ pacman_packages:
   - brightnessctl
   - zsh
   - neovim
+  - fzf
 dotfiles:
   - src: "dotfiles/.bashrc"
     dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.bashrc"
