@@ -62,26 +62,7 @@
         name: "greetd"
         enabled: true
 
-    - name: Change shell to zsh
-      tags: zsh
+    - name: Ensure that shell is set to bash
       user:
         user: "{{ lookup('ansible.builtin.env', 'SUDO_USER') }}"
-        shell: "/usr/bin/zsh"
-
-    - name: Clone powerlevel10k
-      tags: zsh
-      ansible.builtin.git:
-        repo: 'https://github.com/romkatv/powerlevel10k.git'
-        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.zsh/powerlevel10k"
-
-    - name: Clone zsh-autosuggestions
-      tags: zsh
-      ansible.builtin.git:
-        repo: 'https://github.com/zsh-users/zsh-autosuggestions'
-        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.zsh/zsh-autosuggestions"
-
-    - name: Clone zsh-syntax-highlighting
-      tags: zsh
-      ansible.builtin.git:
-        repo: 'https://github.com/zsh-users/zsh-syntax-highlighting'
-        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.zsh/zsh-syntax-highlighting"
+        shell: "/usr/bin/bash"
