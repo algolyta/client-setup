@@ -31,9 +31,7 @@ pacman_packages:
   - swaylock
   - pamixer
   - brightnessctl
-  - zsh
   - neovim
-  - fzf
 dotfiles:
   - src: "dotfiles/.bashrc"
     dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.bashrc"
@@ -47,12 +45,6 @@ dotfiles:
     dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
   - src: "dotfiles/.config/rofi"
     dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/"
-  - src: "dotfiles/.zshrc"
-    dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.zshrc"
-  - src: "dotfiles/.p10k.zsh"
-    dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.p10k.zsh"
-  - src: "dotfiles/.zsh"
-    dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.zsh/"
   - src: "dotfiles/.config/nvim"
     dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/nvim/"
 otherfiles:
