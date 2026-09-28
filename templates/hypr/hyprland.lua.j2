@@ -38,6 +38,9 @@ local mainMod = "SUPER"
 hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
     hl.exec_cmd("swaybg -i /usr/share/backgrounds/wallpaper.jpg")
+{% if enable_suspend | bool %}
+    hl.exec_cmd("hypridle")
+{% endif %}
     -- Optional: notification daemon
     -- hl.exec_cmd("dunst")
 end)

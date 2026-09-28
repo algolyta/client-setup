@@ -3,5 +3,5 @@ vt = 1
 
 [default_session]
 # This launches nwg-hello via Hyprland
-command = "Hyprland -c /etc/nwg-hello/hyprland.lua"
+command = "start-hyprland -- -c /etc/nwg-hello/hyprland.lua"
 user = "greeter"

@@ -5,7 +5,7 @@
   "custom_sessions": [
     {
       "name": "Hyprland",
-      "exec": "Hyprland"
+      "exec": "start-hyprland"
     },
     {
       "name": "Shell",

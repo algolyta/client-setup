@@ -1,4 +1,6 @@
 jpgwallpaper: "wallhaven-k81776.jpg"
+# Idle lock + suspend via hypridle. Only on the laptop; desktops stay awake.
+enable_suspend: "{{ ansible_facts['hostname'] == 'p1arch' }}"
 hypr_default_browser: "{{ 'firefox' if ansible_facts['hostname'] == 'archyarch' else 'brave' }}"
 waybar_workspace_icons:
   1: "{{ '' if ansible_facts['hostname'] == 'archyarch' else '' }}"
@@ -29,6 +31,7 @@ pacman_packages:
   - swaybg
   - nwg-look
   - swaylock
+  - hypridle
   - pamixer
   - brightnessctl
   - neovim

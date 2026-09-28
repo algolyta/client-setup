@@ -36,6 +36,14 @@
       loop: "{{ otherfiles }}"
       when: otherfiles | length > 0
 
+    - name: Copy hypridle config (suspend-enabled hosts only)
+      copy:
+        src: "dotfiles/.config/hypr/hypridle.conf"
+        dest: "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/hypr/hypridle.conf"
+        owner: "{{ lookup('ansible.builtin.env', 'SUDO_USER') }}"
+        mode: preserve
+      when: enable_suspend | bool
+
     - name: Load local vars (host-specific window rules)
       ansible.builtin.include_vars:
         file: "{{ lookup('ansible.builtin.first_found', ['local_vars.yml', 'local_vars.yml.default']) }}"
