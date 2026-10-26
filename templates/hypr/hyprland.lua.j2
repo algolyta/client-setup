@@ -38,9 +38,7 @@ local mainMod = "SUPER"
 hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
     hl.exec_cmd("swaybg -i /usr/share/backgrounds/wallpaper.jpg")
-{% if enable_suspend | bool %}
     hl.exec_cmd("hypridle")
-{% endif %}
     -- Optional: notification daemon
     -- hl.exec_cmd("dunst")
 end)
@@ -171,8 +169,9 @@ hl.bind(mainMod .. " + V",      hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
 
--- Lock screen
-hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("swaylock -c 000000"))
+-- Lock screen (via loginctl, not swaylock directly, so logind/D-Bus and
+-- lock-aware apps like Mattermost Desktop actually see the session as locked)
+hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("loginctl lock-session"))
 
 -- Screenshot
 hl.bind("Print",                 hl.dsp.exec_cmd("grim"))

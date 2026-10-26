@@ -1,5 +1,6 @@
 jpgwallpaper: "wallhaven-k81776.jpg"
-# Idle lock + suspend via hypridle. Only on the laptop; desktops stay awake.
+# hypridle (idle-lock + logind lock-signal wiring) runs on every host.
+# Auto-suspend-on-idle is laptop-only; desktops/work machines stay awake.
 enable_suspend: "{{ ansible_facts['hostname'] == 'p1arch' }}"
 hypr_default_browser: "{{ 'firefox' if ansible_facts['hostname'] == 'archyarch' else 'brave' }}"
 waybar_workspace_icons:

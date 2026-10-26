@@ -1,0 +1,23 @@
+# Deployed on every host: this is what wires logind's Lock signal (from
+# `loginctl lock-session`, triggered by idle, by sleep, or by the manual
+# keybind) to actually running swaylock. Without this running, nothing
+# ever tells logind/D-Bus the session is locked, so lock-aware apps
+# (e.g. Mattermost Desktop's away-status detection) never notice.
+general {
+    lock_cmd = pidof swaylock || swaylock -f -c 000000
+    before_sleep_cmd = loginctl lock-session
+}
+
+# Lock after 5 minutes idle
+listener {
+    timeout = 300
+    on-timeout = loginctl lock-session
+}
+
+{% if enable_suspend | bool %}
+# Suspend after 10 minutes idle (laptop only, see enable_suspend in vars.yml)
+listener {
+    timeout = 600
+    on-timeout = systemctl suspend
+}
+{% endif %}
