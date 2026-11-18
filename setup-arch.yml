@@ -64,6 +64,15 @@
         name: "greetd"
         enabled: true
 
+    # Hyprland starts waybar itself; the packaged user unit would start a second one.
+    - name: Disable waybar systemd user unit (user and global enables)
+      file:
+        path: "{{ item }}/graphical-session.target.wants/waybar.service"
+        state: absent
+      loop:
+        - "{{ lookup('ansible.builtin.env', 'SUDO_HOME') }}/.config/systemd/user"
+        - /etc/systemd/user
+
     - name: Ensure that shell is set to bash
       user:
         user: "{{ lookup('ansible.builtin.env', 'SUDO_USER') }}"
